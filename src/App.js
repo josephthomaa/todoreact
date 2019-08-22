@@ -4,10 +4,12 @@ import Header from './layouts/header';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 import About from './components/pages/About';
+import Login from './components/pages/login'; 
 //import uuid from 'uuid';
 import axios from 'axios';
 
 import './App.css';
+import Register from './components/pages/Register';
 
 class App extends Component {
 	state = {
@@ -50,16 +52,26 @@ render() {
 		return (
 		<Router>
 				<div className='App'>
-          <Header />
-          <div className='container'>
-              <Route exact path = "/" render={ props =>(
+        
+          <div className='container' style = {{ paddingTop:'50px' }}>
+              <Route exact path="/" component={Login} />
+              <Route exact path="/register" component={Register} />
+
+              <Route  path = "/home" render={ props =>(
                 <React.Fragment>
+                    <Header />
                   <AddTodo addTodo={this.addTodo} />
 					        <Todos todos={this.state.todos}       markComplete = {this.markComplete} delTodo={ this.delTodo }/>
                 </React.Fragment>
               )} />
 
-              <Route path="/about" component={About} />
+              <Route path="/about" render ={ props =>(
+                  <React.Fragment>
+                    <Header />
+                    <About />
+                  </React.Fragment>
+              )} />
+              <Route path="/login" component={Login} />
           </div>
           
 				</div>
