@@ -2,11 +2,12 @@ import React from 'react'
 
 function About() {
     return (
-        // calling welcome component
+        
         <React.Fragment>
             <h1>About</h1>
             <p>This is Todolist app v1.0.</p>
            
+           {/* Calling welcome component and reusing it with diff msg's  */}
             <div>
                 <Welcome name="react" />
                 <Welcome name="redux" />
